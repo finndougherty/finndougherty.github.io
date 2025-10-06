@@ -48,7 +48,7 @@ nav {
 .site-nav { grid-area: nav; }
 .featured { grid-area: featured; background: #f0f0f0; padding: 1rem; }
 .main-content { grid-area: main; background: #fafafa; padding: 1rem; }
-.sidebar { grid-area: sidebar; background: #e8e8e8; padding: 1rem; }
+.sidebar { grid-area: sidebar; background: #fafafa; padding: 1rem; }
 .site-footer { grid-area: footer; text-align: center; }
 
 /* responsive homepage */
@@ -57,7 +57,7 @@ nav {
 }
 
 /* cards */
-.team-card { background: #ddd; padding: 1rem; margin-bottom: 0.5rem; }
+.team-card { background: #FFCB05; padding: 1rem; margin-bottom: 0.5rem; }
 
 /* events grid */
 .events-page {
@@ -111,3 +111,47 @@ nav {
 /* posts */
 .posts { margin-bottom: 1rem; }
 #postForm textarea { width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; }
+
+.post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+  margin: 4px 0;
+  background: #f4f4f4;
+  border-radius: 6px;
+}
+
+.delete-btn {
+  background: #c62828;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete-btn:hover {
+  background: #a51818;
+}
+
+/* mobile*/
+.roster-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Tablet*/
+@media (min-width: 400px) {
+  .roster-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop */
+@media (min-width: 550px) {
+  .roster-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

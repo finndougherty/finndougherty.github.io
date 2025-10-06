@@ -111,3 +111,30 @@ nav {
 /* posts */
 .posts { margin-bottom: 1rem; }
 #postForm textarea { width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; }
+
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #635725;
+  
+}
+
+body.dark .team-card,
+body.dark .featured,
+body.dark .main-content,
+body.dark .sidebar,
+body.dark .events-content,
+body.dark .forum-content,
+body.dark .forum-sidebar,
+body.dark .site-footer {
+  background-color: #1e1e1e; 
+  color: #FFCB05;           
+}
+
+body.light nav {
+  background-color: #FFCB05; 
+}

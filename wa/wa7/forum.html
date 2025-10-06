@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Flight - Community Forum</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="forum-page">
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-brand">College Flight</div>
+        <button class="nav-toggle" aria-label="Navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu">
+            <li><a href="wa6.html">Home</a></li>
+            <li><a href="teams.html">Team's Hub</a></li>
+            <li><a href="forum.html">Community Forum</a></li>
+            <li><a href="events.html">Events & Tournaments</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="site-header">
+        <h1>Community Forum</h1>
+        <p>Share your thoughts on college ultimate frisbee!</p>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="forum-sidebar">
+        <h2>Channels</h2>
+        <ul>
+            <li><button data-channel="general" aria-pressed="true"># General</button></li>
+        </ul>
+    </aside>
+
+    <!-- Main forum content -->
+    <main class="forum-content">
+        <h2 id="channel-title"># General</h2>
+
+        <div class="posts" id="posts">
+         
+        </div>
+
+     
+        <form id="postForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your name">
+
+            <label for="postInput" class="sr-only"></label>
+            <textarea id="postInput" rows="3" placeholder="Write your opinion..."></textarea>
+
+            <button type="submit">Post</button>
+        </form>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2025 College Flight. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
