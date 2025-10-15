@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(123, 123, 188);
+            flex-direction: row;
+
+        }
+
+        .loader {
+            border: 10px solid #ddd;
+            border-top: 10px solid #e3f11f;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            animation: spin 2s linear infinite;
+        }
+
+        .box {
+            height: 200px;
+            width: 200px;
+            border: 5px black solid;
+            background-color: red;
+            animation-name: moving-box;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-out;
+            position: relative;
+
+        }
+
+        @keyframes moving-box {
+            0% {
+                left: 0px;
+                top: 0px;
+                background-color: red;
+            }
+
+            25% {
+                left: 200px;
+                top: 0px;
+                background-color: blue;
+            }
+
+            50% {
+                left: 200px;
+                top: 200px;
+                background-color: yellow;
+            }
+
+            75% {
+                left: 0px;
+                top: 200px;
+                background-color: green;
+            }
+
+            100% {
+                left: 0px;
+                top: 0px;
+                background-color: red;
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+                border-top-color: red;
+            }
+
+            18% {
+                transform: rotate(60deg);
+                border-top-color: orange;
+            }
+
+            34% {
+                transform: rotate(120deg);
+                border-top-color: yellow;
+            }
+
+            54% {
+                transform: rotate(180deg);
+                border-top-color: green;
+            }
+
+            70% {
+                transform: rotate(240deg);
+                border-top-color: blue;
+            }
+
+            87% {
+                transform: rotate(300deg);
+                border-top-color: purple;
+            }
+
+            100% {
+                transform: rotate(360deg);
+                border-top-color: red;
+            }
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #eef202;
+            animation: fade 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0.4;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loader"></div>
+    <div class="box"></div>
+    <p>Loading the content</p>
+    <script>
+
+    </script>
+</body>
+
+</html>
