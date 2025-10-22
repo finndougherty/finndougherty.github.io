@@ -1,0 +1,216 @@
+/* reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: clamp(1rem, 2vw, 3rem);
+}
+
+/* nav */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  background-color: #FFCB05;
+  min-height: 64px;
+  z-index: 1000;
+  min-height: 64px;
+  line-height: 1;
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: black;
+  border-radius: 2px;
+  transition: background-color 0.2s, transform 0.3s;
+}
+
+.nav-toggle:hover span,
+.nav-toggle:focus span {
+  background-color: white;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 3vw;
+  list-style: none;
+  transition: opacity 0.2s ease;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: black;
+  padding: 0.5em 1em;
+  transition: background-color 0.2s;
+}
+
+.nav-menu li a:hover {
+  background-color: white;
+  border-radius: 4px;
+}
+
+/* responsive nav */
+@media (max-width: 500px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1em;
+    background-color: #5880a7;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    padding: 1em 0;
+    opacity: 0;
+  }
+
+  .nav-menu.active {
+    display: flex;
+    opacity: 1;
+  }
+}
+
+/* homepage grid */
+.homepage {
+  display: grid;
+  grid-template-areas:
+    "nav nav"
+    "header header"
+    "featured sidebar"
+    "main sidebar"
+    "footer footer";
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: min-content min-content minmax(160px, auto) 1fr auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.site-header {
+  grid-area: header;
+  text-align: center;
+  background: #fafafa;
+  padding: 3rem 1rem;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.site-nav {
+  grid-area: nav;
+}
+
+.featured {
+  grid-area: featured;
+  background: #f0f0f0;
+  padding: 1rem;
+  min-height: 160px;       
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+
+
+.main-content {
+  grid-area: main;
+  background: #fafafa;
+  padding: 1rem;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background: #fafafa;
+  padding: 1rem;
+}
+
+.site-footer {
+  grid-area: footer;
+  text-align: center;
+}
+
+/* Prevent layout cost for below-the-fold */
+main,
+aside,
+footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 600px;
+}
+
+/* responsive homepage */
+@media (max-width: 768px) {
+  .homepage {
+    grid-template-areas: "nav" "header" "featured" "main" "sidebar" "footer";
+    grid-template-columns: 1fr;
+  }
+}
+
+/* cards */
+.team-card {
+  background: #FFCB05;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  width: clamp(100px, 80%, 900px);
+  min-height: 200px;        
+  contain: layout paint;   
+}
+
+
+.team-card h3 {
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 600;
+  color: #000;
+  margin-bottom: clamp(0.5rem, 1vw, 1rem);
+  text-align: center;
+}
+
+/* roster */
+.roster-group p {
+  font-size: clamp(1rem, 1.5vw, 3rem);
+  line-height: 1.5;
+}
+
+.roster-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 2vw, 3rem);
+}
+
+@media (min-width: 400px) {
+  .roster-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 550px) {
+  .roster-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

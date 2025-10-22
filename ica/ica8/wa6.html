@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>College Flight</title>
+
+<!--critical css LCP fix-->
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #fff;
+    }
+
+    .homepage {
+      display: grid;
+      grid-template-areas:
+        "nav nav"
+        "header header"
+        "featured sidebar"
+        "main sidebar"
+        "footer footer";
+      grid-template-columns: 3fr 1fr;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    nav {
+      grid-area: nav;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em;
+      background-color: #FFCB05;
+      min-height: 64px;
+    }
+
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 3vw;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-menu li a {
+      text-decoration: none;
+      color: black;
+      padding: 0.5em 1em;
+      transition: background-color 0.2s;
+    }
+
+    .nav-menu li a:hover {
+      background-color: white;
+      border-radius: 4px;
+    }
+
+    .site-header {
+      grid-area: header;
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #fafafa;
+      min-height: 40vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .site-header h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .site-header p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+  </style>
+
+ 
+  <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'"> 
+  <noscript><link rel="stylesheet" href="style.css"></noscript>
+</head>
+
+<body class="homepage">
+
+  <!--Nav-->
+  <nav class="main-nav">
+    <div class="nav-brand">College Flight</div>
+    <button class="nav-toggle" aria-label="Navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="wa6.html">Home</a></li>
+      <li><a href="forum.html">Community Forum</a></li>
+      <li><a href="events.html">Events & Tournaments</a></li>
+    </ul>
+  </nav>
+
+  <!--Header-->
+  <header class="site-header">
+    <h1>Welcome to College Flight</h1>
+    <p>The central hub for D1 Ultimate Frisbee</p>
+  </header>
+
+  <!--Featured Section-->
+  <section class="featured">
+    <h2>Featured Tournament</h2>
+    <p>College Nationals 2025</p>
+  </section>
+
+  <!--Main Content-->
+  <main class="main-content" id="hub">
+    <h2>Team Rosters</h2>
+
+    <!-- Colorado Mamabird -->
+    <div class="team-card" data-region="west">
+      <h3>Colorado Mamabird 2024-2025 Roster</h3>
+      <div class="roster-grid">
+        <div class="roster-group">
+          <p>Tobias Brooks — #0</p>
+          <p>Zeke Thoreson — #1</p>
+          <p>Zachary Weiss — #2</p>
+          <p>Thomas Tasker — #3</p>
+          <p>Finn Dougherty — #4</p>
+        </div>
+        <div class="roster-group">
+          <p>Daniel Bauman — #5</p>
+          <p>Axel Hartzog — #6</p>
+          <p>Gaurav Prasad — #7</p>
+          <p>Levi Tapper — #8</p>
+          <p>Rami Rifaat — #9</p>
+        </div>
+        <div class="roster-group">
+          <p>Alex Yu — #10</p>
+          <p>Ezra Thoreson — #11</p>
+          <p>Benton Shevlin — #12</p>
+          <p>Daniel Williams — #13</p>
+          <p>Samuel Kilgore — #14</p>
+        </div>
+        <div class="roster-group">
+          <p>Tucker Kalmus — #15</p>
+          <p>Curtis Pakgross — #17</p>
+          <p>Willem Barnouw — #20</p>
+          <p>Zack Bacon — #21</p>
+          <p>Nick Kleinhelter — #22</p>
+        </div>
+        <div class="roster-group">
+          <p>Elliot Hawkins — #23</p>
+          <p>Omar Semrin — #26</p>
+          <p>Lukas Alexander — #27</p>
+          <p>Ethan Burgess — #34</p>
+          <p>Ryan Allenson — #42</p>
+        </div>
+        <div class="roster-group">
+          <p>Nanda Min Fink — #46</p>
+          <p>Ryan Shigley — #66</p>
+          <p>Max Van Sickle — #72</p>
+          <p>Juan Castillero — #89</p>
+          <p>Joe Michaud — #91</p>
+        </div>
+        <div class="roster-group">
+          <p>Daniel Estrin — #99</p>
+          <p>Jack Baggenstoss — #58</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--Sidebar-->
+  <aside class="sidebar">
+    <h2>Resources</h2>
+    <ul>
+      <li><a href="https://ultiworld.com/">Ultiworld</a></li>
+      <li><a href="https://usaultimate.ultimatecentral.com/">USAU</a></li>
+      <li><a href="https://www.ultiphotos.com/">Ultiphotos</a></li>
+    </ul>
+  </aside>
+
+  <!--Footer-->
+  <footer class="site-footer">
+    <p>&copy; 2025 College Flight. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

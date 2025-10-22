@@ -1,0 +1,74 @@
+@import url(https://use.typekit.net/yzd0ngd.css);
+        html{
+           font-family: "aglet-sans-variable", sans-serif;
+            font-variation-settings: "wght" 400;
+        }    
+        .colorbox{
+            height: 45px;
+            width:  px;
+        }
+        body{
+            background-color: #294936;
+        }
+         #box1{
+            background-color: #FF9F1C;
+            width: px;
+            height: 45px;
+        }
+        #box2{
+            background-color: #212922;
+            width: 200px;
+            height: 700px;
+        }
+        #box3{
+            background-color: #294936;
+            width: 200px;
+            height: 700px;
+        }
+        #box4{
+            background-color: #C4D6B0;
+            width: 200px;
+            height: 700px;
+        }
+        #box5{
+            background-color: #C2D3CD;
+            width: 200px;
+            height: 700px;
+        }
+        p{
+            font-size: 20px;
+            color: #C4D6B0
+        }
+        .small-text{
+            font-size: 16px;
+        }
+        h3{
+            font-size: 24px;
+            color: #FFFACD;
+        }
+
+        h2{
+            font-size: 28px;
+            color: #FF9F1C;
+        }
+        h1{
+            font-size: 32px;
+            color: #212922;
+        }
+        a{
+            text-decoration: none;
+            color: #C4D6B0;
+        }
+        a:hover{
+            text-decoration: underline;
+            color: #FF9F1C;
+        }
+        a:visited{
+            color: #C4D6B0;
+        }
+        ul li {
+        color: #C4D6B0;
+        }   
+        ul {
+        color: #FF9F1C; 
+        }
