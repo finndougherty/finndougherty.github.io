@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NewsAPI Explorer</title>
+  <title>NewsAPI Category Explorer</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -93,7 +93,7 @@
   </style>
 </head>
 <body>
-  <h1>NewsAPI Category Explorer</h1>
+  <h1>NewsAPI Explorer</h1>
   <p id="status">Select a category to load the latest news.</p>
 
   <div id="buttons">
@@ -111,6 +111,7 @@
   <script>
     const API_KEY = "bcf419ab163e4bd7a791b5d4877f4899";
     const BASE_URL = "https://newsapi.org/v2/everything";
+    const PROXY = "https://api.allorigins.win/get?url="; 
 
     const buttons = {
       techBtn: "technology",
@@ -128,25 +129,25 @@
       const status = document.getElementById("status");
       const container = document.getElementById("articles");
       container.innerHTML = "";
-      status.textContent = " Loading " + category + " news...";
+      status.textContent = "Loading " + category + " news...";
 
       try {
         let allArticles = [];
 
-     
         for (let page = 1; page <= 3; page++) {
-          const url = `${BASE_URL}?q=${encodeURIComponent(category)}&language=en&pageSize=20&page=${page}&sortBy=publishedAt&apiKey=${API_KEY}`;
-          const response = await fetch(url);
+          const targetUrl = `${BASE_URL}?q=${encodeURIComponent(category)}&language=en&pageSize=20&page=${page}&sortBy=publishedAt&apiKey=${API_KEY}`;
+          const finalUrl = `${PROXY}${encodeURIComponent(targetUrl)}`;
+          
+          const response = await fetch(finalUrl);
+          if (!response.ok) throw new Error("HTTP Error " + response.status);
+          
+          const proxyData = await response.json();
+          const data = JSON.parse(proxyData.contents);
 
-          if (!response.ok) {
-            throw new Error("HTTP Error " + response.status);
-          }
-
-          const data = await response.json();
           if (data.articles && data.articles.length > 0) {
             allArticles = allArticles.concat(data.articles);
           } else {
-            break; 
+            break;
           }
         }
 
