@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NewsAPI Explorer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 { margin-bottom: 10px; }
+
+    #buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      background-color: #0078d7;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background-color: #005ea6;
+    }
+
+    #articles {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 15px;
+    }
+
+    .article {
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .article img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .article h3 {
+      font-size: 1rem;
+      margin: 8px 0;
+    }
+
+    .article p {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .article a {
+      color: #0078d7;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .article a:hover {
+      text-decoration: underline;
+    }
+
+    #status {
+      color: gray;
+      margin-bottom: 10px;
+    }
+
+    #dataNotice {
+      font-size: 0.9em;
+      color: #444;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+<body>
+  <h1>NewsAPI Category Explorer</h1>
+  <p id="status">Select a category to load the latest news.</p>
+
+  <div id="buttons">
+    <button id="techBtn">Technology</button>
+    <button id="sportsBtn">Sports</button>
+    <button id="scienceBtn">Science</button>
+    <button id="businessBtn">Business</button>
+    <button id="healthBtn">Health</button>
+  </div>
+
+  <div id="articles"></div>
+
+  <p id="dataNotice"> This page fetches data from <strong>NewsAPI.org</strong> and does not store any personal data.</p>
+
+  <script>
+    const API_KEY = "bcf419ab163e4bd7a791b5d4877f4899";
+    const BASE_URL = "https://newsapi.org/v2/everything";
+
+    const buttons = {
+      techBtn: "technology",
+      sportsBtn: "sports",
+      scienceBtn: "science",
+      businessBtn: "business",
+      healthBtn: "health"
+    };
+
+    for (let id in buttons) {
+      document.getElementById(id).addEventListener("click", () => loadArticles(buttons[id]));
+    }
+
+    async function loadArticles(category) {
+      const status = document.getElementById("status");
+      const container = document.getElementById("articles");
+      container.innerHTML = "";
+      status.textContent = " Loading " + category + " news...";
+
+      try {
+        let allArticles = [];
+
+     
+        for (let page = 1; page <= 3; page++) {
+          const url = `${BASE_URL}?q=${encodeURIComponent(category)}&language=en&pageSize=20&page=${page}&sortBy=publishedAt&apiKey=${API_KEY}`;
+          const response = await fetch(url);
+
+          if (!response.ok) {
+            throw new Error("HTTP Error " + response.status);
+          }
+
+          const data = await response.json();
+          if (data.articles && data.articles.length > 0) {
+            allArticles = allArticles.concat(data.articles);
+          } else {
+            break; 
+          }
+        }
+
+        if (allArticles.length === 0) {
+          status.textContent = "No articles found for " + category + ".";
+          return;
+        }
+
+        status.textContent = `Showing ${category} articles:`;
+        displayArticles(allArticles);
+      } catch (err) {
+        console.error(err);
+        alert(" Failed to load news. Please check your connection or try again later.");
+        status.textContent = "Error loading news.";
+      }
+    }
+
+    function displayArticles(articles) {
+      const container = document.getElementById("articles");
+      container.innerHTML = "";
+
+      articles.forEach(a => {
+        const card = document.createElement("div");
+        card.className = "article";
+        card.innerHTML = `
+          <img src="${a.urlToImage || 'https://via.placeholder.com/400x200?text=No+Image'}" alt="News Image">
+          <h3>${a.title}</h3>
+          <p>${a.description || 'No description available.'}</p>
+          <a href="${a.url}" target="_blank">Read More</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
