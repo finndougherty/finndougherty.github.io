@@ -13,14 +13,9 @@
       padding: 20px;
     }
 
-    header, main, footer {
-      margin: 0 auto;
-      max-width: 1100px;
-    }
+    h1 { margin-bottom: 10px; }
 
-    header h1 { margin-bottom: 10px; }
-
-    nav {
+    #buttons {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -32,26 +27,25 @@
       padding: 10px 15px;
       border: none;
       border-radius: 6px;
-      background-color: #023c6b;
+      background-color: #1270bd;
       color: white;
       cursor: pointer;
       transition: 0.2s;
     }
 
-    button:hover,
-    button:focus {
-      background-color: #010f1b;
-      outline: 3px solid #ffbf47;
-      outline-offset: 2px;
+    button:hover {
+      background-color: #0c60a9;
     }
 
-    section#articles {
+    #articles {
+      max-width: 1100px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
       gap: 15px;
     }
 
-    article {
+    .article {
       background: white;
       border-radius: 10px;
       padding: 10px;
@@ -59,65 +53,60 @@
       text-align: left;
     }
 
-    article img {
+    .article img {
       width: 100%;
       height: 150px;
       object-fit: cover;
       border-radius: 8px;
     }
 
-    article h3 {
+    .article h3 {
       font-size: 1rem;
       margin: 8px 0;
     }
 
-    article p {
+    .article p {
       font-size: 0.9rem;
       color: #023c6b;
     }
 
-    article a {
-      color: #023c6b;
+    .article a {
+      color: #0f7dd7;
       text-decoration: none;
       font-weight: bold;
     }
 
-    article a:hover {
+    .article a:hover {
       text-decoration: underline;
     }
 
     #status {
-      color: #333;
+      color: #444;
       margin-bottom: 10px;
     }
 
-    footer {
+    #dataNotice {
       font-size: 0.9em;
-      color: #333;
+      color: #444;
       margin-top: 25px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>NewsAPI Explorer</h1>
-    <p id="status" aria-live="polite">Select a category to load the latest news.</p>
-    <nav aria-label="News categories">
-      <button id="techBtn">Technology</button>
-      <button id="sportsBtn">Sports</button>
-      <button id="scienceBtn">Science</button>
-      <button id="businessBtn">Business</button>
-      <button id="healthBtn">Health</button>
-    </nav>
-  </header>
+  <h1>NewsAPI Explorer</h1>
+  <p id="status">Select a category to load the latest news.</p>
 
-  <main>
-    <section id="articles" aria-label="News articles"></section>
-  </main>
+  <div id="buttons">
+    <button id="techBtn">Technology</button>
+    <button id="sportsBtn">Sports</button>
+    <button id="scienceBtn">Science</button>
+    <button id="businessBtn">Business</button>
+    <button id="healthBtn">Health</button>
+  </div>
 
-  <footer>
-    <p>This page fetches data from <strong>NewsAPI.org</strong> and does not store any personal data.</p>
-  </footer>
+  <div id="articles"></div>
+
+  <p id="dataNotice"> This page fetches data from <strong>NewsAPI.org</strong> and does not store any personal data.</p>
 
   <script>
     const API_KEY = "bcf419ab163e4bd7a791b5d4877f4899";
@@ -171,7 +160,7 @@
         displayArticles(allArticles);
       } catch (err) {
         console.error(err);
-        alert("Failed to load news. Please check your connection or try again later.");
+        alert(" Failed to load news. Please check your connection or try again later.");
         status.textContent = "Error loading news.";
       }
     }
@@ -181,12 +170,13 @@
       container.innerHTML = "";
 
       articles.forEach(a => {
-        const card = document.createElement("article");
+        const card = document.createElement("div");
+        card.className = "article";
         card.innerHTML = `
-          <img src="${a.urlToImage || 'https://via.placeholder.com/400x200?text=No+Image'}" alt="${a.title}">
+          <img src="${a.urlToImage || 'https://via.placeholder.com/400x200?text=No+Image'}" alt="News Image">
           <h3>${a.title}</h3>
           <p>${a.description || 'No description available.'}</p>
-          <a href="${a.url}" target="_blank">Read more about ${a.title}</a>
+          <a href="${a.url}" target="_blank">Read More</a>
         `;
         container.appendChild(card);
       });

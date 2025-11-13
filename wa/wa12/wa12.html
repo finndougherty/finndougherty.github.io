@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NewsAPI Category Explorer</title>
+  <link rel="stylesheet" href="wa12.css" />
+</head>
+<body>
+  <header>
+    <h1>NewsAPI Explorer</h1>
+    <p id="status" aria-live="polite">Select a category to load the latest news.</p>
+    <nav aria-label="News categories">
+      <button id="techBtn">Technology</button>
+      <button id="sportsBtn">Sports</button>
+      <button id="scienceBtn">Science</button>
+      <button id="businessBtn">Business</button>
+      <button id="healthBtn">Health</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="articles" aria-label="News articles"></section>
+  </main>
+
+  <footer>
+    <p>This page fetches data from <strong>NewsAPI.org</strong> and does not store any personal data.</p>
+  </footer>
+
+  <script src="wa12.js"></script>
+</body>
+</html>
