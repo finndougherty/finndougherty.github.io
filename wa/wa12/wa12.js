@@ -17,7 +17,6 @@ let allArticles = [];
 const status = document.getElementById("status");
 const container = document.getElementById("articles");
 
-// Create and style the "Load More" button
 const loadMoreBtn = document.createElement("button");
 loadMoreBtn.textContent = "Load More";
 loadMoreBtn.style.display = "none";
@@ -31,7 +30,6 @@ loadMoreBtn.style.cursor = "pointer";
 loadMoreBtn.addEventListener("click", loadMoreArticles);
 document.body.appendChild(loadMoreBtn);
 
-// Assign category button handlers
 for (let id in buttons) {
   document.getElementById(id).addEventListener("click", () => {
     currentCategory = buttons[id];
